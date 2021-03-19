@@ -13,6 +13,7 @@
     max-width: 1000px;
   }
   table {
+    float: left;
     border-collapse: collapse;
   }
   table td {
@@ -23,20 +24,23 @@
   .alive {
     background-color: purple;
   }
+  p {
+    margin: 0;
+    padding: 0 0 1em 0;
+  }
 </style>
 </head>
 
 <body>
   <main>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+    <button id="step">Step</button>
+    <button id="clear">Clear</button>
+    <hr>
     <table id="grid"></table>
-    <!-- <canvas id="back" width="1000" height="500"></canvas>
-    <canvas id="game" width="1000" height="500"></canvas> -->
   </main>
-
-
-
-  <!-- <script src="script.js"></script> -->
-  <script src="mylie.js"></script>
+  <script src="life.js"></script>
 </body>
 
 </html>
