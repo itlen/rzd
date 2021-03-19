@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
     matrix = initRandomMtrx();
     fillGrid(matrix);
     t = setInterval(function () {
-      evolution(matrix);
+      evolutionStep(matrix);
     }, 1000);
   });
 
@@ -20,7 +20,8 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   document.querySelector("#step").addEventListener("click", function () {
-    evolution(matrix);
+    clearInterval(t);
+    evolutionStep(matrix);
   });
 
   document.querySelector("#clear").addEventListener("click", function () {
@@ -35,21 +36,17 @@ document.addEventListener("DOMContentLoaded", function () {
     let i = c.parentNode.rowIndex;
     let j = c.cellIndex;
 
+    if (!matrix[i]) {
+      matrix = initRandomMtrx();
+    }
+
     matrix[i][j] = 1;
 
     let a = getAliveNeighborsForCell(matrix, i, j);
   });
 });
 
-function clearMatrix(m) {
-  for (var i = 0; i < HEIGHT; i++) {
-    for (var j = 0; j < WIDTH; j++) {
-      m[i][j] = 0;
-    }
-  }
-}
-
-function evolution(m) {
+function evolutionStep(m) {
   for (var i = 0; i < HEIGHT; i++) {
     for (var j = 0; j < WIDTH; j++) {
       var thisIsAlive = Boolean(m[i][j]) === true;
@@ -110,6 +107,15 @@ function fillGrid(m) {
       x++;
     }
   }
+}
+
+function clearMatrix(m) {
+  m = [];
+  // for (var i = 0; i < HEIGHT; i++) {
+  //   for (var j = 0; j < WIDTH; j++) {
+  //     m[i][j] = 0;
+  //   }
+  // }
 }
 
 function initRandomMtrx() {
