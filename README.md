@@ -1,2 +1,2 @@
 # rzd
-Go
+Go https://itlen.github.io/rzd/
